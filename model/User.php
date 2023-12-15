@@ -1,5 +1,5 @@
 <?php
-include_once '../config/Database.php';
+include_once '../../config/Database.php';
 
 
 Class UserModel{
@@ -51,11 +51,16 @@ Class UserModel{
     
 
 
-    // public function getAllUsers(){
-    //     $this->db->query("SELECT * FROM user");
-    //     return $this->db->resultassoc();
-    // }
-
+    public function getAllUsers() {
+        $this->db->query("SELECT * FROM user");
+    
+        if ($this->db->execute()) {
+            $users = $this->db->resultassoc();
+            return $users;
+        } else {
+            die("Error in get users");
+        }
+    }
     // public function updataUser($data){
     //     $id = $data['id'];
     //     $fullName = $data['fullName'];
