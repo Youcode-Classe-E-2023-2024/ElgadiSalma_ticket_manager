@@ -21,34 +21,38 @@
             </div> -->
             <form action="">
             <div>
-                 <input type="text" name="titre" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500"  placeholder="Titre "/>
+                 <input type="text" name="titre" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8"  placeholder="Titre "/>
             </div>
 
              <div>
-                 <input type="text" name="description" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8"  placeholder="Description"/>
+                 <input type="text" name="description" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 "  placeholder="Description"/>
+            </div>
+            <div class="">
+
+            <select name="Priorite"  class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8">
+                <option selected disabled>priorite</option>
+                <option value="">Normal</option>
+                <option value="">Urgent</option>
+
+            </select>
             </div>
 
-             <div>
-             <select class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" name="category" id="category">
-            <option selected disabled>Statut</option>
-            <option value="">zz</option>
-            </select>
-             </div>
+            <div class="relative inline-block">
+            <input type="text" id="searchInput" placeholder="Search" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500">
+            <div class="absolute max-h-40 w-full z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto hidden"  id="dropdownContent">
+            <?php
+            include_once '../../controller/User.php';
+            $users = get_users();
+            foreach ($users as $user) {
+            ?>
+                <div class="p-2">
+                    <label><input type="checkbox" value="option1" class="mr-2"> Option 1</label>
+                </div>
+            <?php } ?>
+            </div>
+            </div>
+            <button type="button" onclick="toggleDropdown()"><></button>
 
-             <div>
-             <input type="text" id="employeeSearch" oninput="filterOptions()" placeholder="Rechercher un employé">
-            <select name="" id="assigneesSelect" multiple>
-                <!-- Options d'assignation -->
-                <option value="john_doe">John Doe</option>
-                <option value="jane_doe">Jane Doe</option>
-                <option value="bob_smith">Bob Smith</option>
-                <option value="john_doe">John Doe</option>
-                <option value="jane_doe">Jane Doe</option>
-                <option value="bob_smith">Bob Smith</option>
-                <!-- Ajoutez ici d'autres options d'assignation -->
-            </select>
-
-             </div>
             
             <div class="flex justify-center my-6">
                 <button class=" rounded-full  p-3 w-full sm:w-56   bg-gradient-to-r from-sky-600  to-teal-300 text-white text-lg font-semibold " >
@@ -61,6 +65,41 @@
         </div>
     </div>
 </div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const dropdownContent = document.getElementById('dropdownContent');
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    searchInput.addEventListener('input', filterOptions);
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSelection);
+    });
+
+    function filterOptions() {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        Array.from(dropdownContent.children).forEach(option => {
+            const optionText = option.textContent.toLowerCase();
+            option.style.display = optionText.includes(searchTerm) ? 'block' : 'none';
+        });
+    }
+
+    function updateSelection() {
+        const selectedOptions = Array.from(checkboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value);
+
+        // Display the selected options (customize based on your needs)
+        console.log('Selected Options:', selectedOptions);
+    }
+    function toggleDropdown() {
+        var dropdown = document.getElementById('dropdownContent');
+        dropdown.classList.toggle('hidden');
+    }
+</script>
+
     </body>
 
     
