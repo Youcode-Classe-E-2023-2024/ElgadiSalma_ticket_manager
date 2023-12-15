@@ -8,7 +8,7 @@
     
     </head>
 
-    <?php require_once "../include/navbar.php"; ?>
+<?php require_once "../../view/include/navbar.php"; ?>
     <body>
 
         
@@ -31,24 +31,27 @@
 
             <select name="Priorite"  class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8">
                 <option selected disabled>priorite</option>
-                <option value="">Normal</option>
-                <option value="">Urgent</option>
-
+                <option <?php echo ($priorite['priorite'] == 'normal') ? 'selected' : ''; ?>>Normal</option>
+                <option <?php echo ($priorite['priorite'] == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
             </select>
             </div>
 
             <div class="relative inline-block">
             <input type="text" id="searchInput" placeholder="Search" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500">
             <div class="absolute max-h-40 w-full z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto hidden"  id="dropdownContent">
-            <?php
-            include_once '../../controller/User.php';
-            $users = get_users();
-            foreach ($users as $user) {
-            ?>
-                <div class="p-2">
-                    <label><input type="checkbox" value="option1" class="mr-2"> Option 1</label>
-                </div>
-            <?php } ?>
+                <?php
+                if (!empty($users)) {
+                    foreach ($users as $user) {
+                    ?>
+                        <div class="p-2">
+                            <label><input type="checkbox" value="<?php echo $user['id_user']; ?>" class="mr-2"><?php echo $user['username']; ?></label>
+                        </div>
+                    <?php
+                    }
+                } else {
+                    echo "Aucun utilisateur disponible."; // Message à afficher si $users est vide
+                }
+                ?>
             </div>
             </div>
             <button type="button" onclick="toggleDropdown()"><></button>
