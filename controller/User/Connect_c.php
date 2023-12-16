@@ -13,8 +13,6 @@ if($_SERVER["REQUEST_METHOD"] === 'POST'){
 echo"weeeeeeeeeeeee";
 
       }else{
-        // echo "ZZ";
-        
         include_once"../view/connect.php?STATUS=probleme de connexion ";      
     }
     }
