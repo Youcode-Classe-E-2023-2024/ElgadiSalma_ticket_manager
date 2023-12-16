@@ -34,7 +34,7 @@
             </a>
             
             </a>
-            <a href="./add.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="../../controller/Ticket/add_ticket.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-store"></i>
                 <span>Ajouter ticket</span>
             </a>
