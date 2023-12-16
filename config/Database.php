@@ -61,7 +61,6 @@
       return $this->stmt->execute();
     }
 
-    // Get result set as array of objects
     public function resultSet(){
       $this->execute();
       return $this->stmt->fetchAll(PDO::FETCH_OBJ);
@@ -71,7 +70,6 @@
       return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Get single record as object
     public function single(){
       $this->execute();
       return $this->stmt->fetch(PDO::FETCH_OBJ);
@@ -81,6 +79,29 @@
     public function rowCount(){
       return $this->stmt->rowCount();
     }
-    
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
+
+    public function beginTransaction()
+    {
+        return $this->dbh->beginTransaction();
+    }
+
+    public function endTransaction()
+    {
+        return $this->dbh->commit();
+    }
+
+    public function cancelTransaction()
+    {
+        return $this->dbh->rollBack();
+    }
+
+    public function debugDumpParams()
+    {
+        return $this->stmt->debugDumpParams();
+    }
   }
   ?>
