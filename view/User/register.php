@@ -10,7 +10,7 @@
     <!-- component -->
 <div class="h-screen md:flex">
 	<div class="flex md:w-1/2 justify-center py-10 items-center bg-white">
-		<form class="bg-white" action="../controller/Register_c.php" method="post">
+		<form class="bg-white" action="../../controller/User/Register_c.php" method="post">
 			<h1 class="text-gray-800 font-bold text-2xl mb-1">Hello !</h1>
 			<p class="text-sm font-normal text-gray-600 mb-7">Welcome to Avito</p>
 			<div class="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
