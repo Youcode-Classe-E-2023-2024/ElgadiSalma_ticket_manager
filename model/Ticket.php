@@ -40,5 +40,20 @@ class TicketModel
         $this->db->endTransaction();
         return true;
     }
+
+    public function getAllTickets() {
+        $this->db->query("SELECT * FROM ticket");
+    
+        if ($this->db->execute()) {
+            $tickets = $this->db->resultassoc();
+            return $tickets;
+        } else {
+            die("Erreur lors de la récupération des tickets.");
+        }
+    }
+
+
 }
+
+
 ?>
