@@ -1,4 +1,3 @@
-<!-- component -->
 <html>
     <head>
     <meta charset="UTF-8">
@@ -22,11 +21,11 @@
                 <input type="text" name="description" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 "  placeholder="Description"required/>
         </div>
         <div class="">
-            <select name="priorite" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" required>
-                <option selected disabled>priorite</option>
-                <option <?php echo ($priorite == 'normal') ? 'selected' : ''; ?>>Normal</option>
-                <option <?php echo ($priorite == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
-            </select>
+        <select name="priorite" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" required>
+            <option selected disabled>Priorité</option>
+            <option value="normal" <?php echo ($priorite == 'normal') ? 'selected' : ''; ?>>Normal</option>
+            <option value="urgent" <?php echo ($priorite == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
+        </select>
         </div>
         <div class="relative inline-block">
         <input type="text" id="searchInput" placeholder="Search" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500">
