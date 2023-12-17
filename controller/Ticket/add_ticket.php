@@ -6,6 +6,7 @@ $userModel = new UserModel();
 $ticketModel = new TicketModel();
 
 $priorite = "";
+$statut = "";
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $titre = $_POST['titre'];
