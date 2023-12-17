@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>avito</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
-<script src="../../js/main.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avito</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <script src="../../js/main.js"></script>
     <style>
-        select {
+         select {
             -webkit-appearance: none;
             -moz-appearance: none;
             -ms-appearance: none;
@@ -64,70 +65,49 @@
             color: #00b9a8;}
     </style>
 </head>
-<body class="bg-indigo-200	 lg:flex">
-    
+
+<body class="bg-indigo-200 lg:flex">
+
     <?php require_once "../../view/include/navbar.php"; ?>
-    
-    <div class="lg:w-full lg:ml-64 px-6 py-8 flex flex-col	">
 
-    <h1 class="text-4xl text-purple-500 py-4 text-center font-bold">Tous les tickets</h1>
+    <div class="lg:w-full lg:ml-64 px-6 py-8 flex flex-col ">
 
-    <div class="relative mt-6 max-w-2xl	 py-8 text-gray-900 mx-auto flex gap-x-3">
-        <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
-            <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-                <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </span>
+        <h1 class="text-4xl text-purple-500 py-4 text-center font-bold">Tous les tickets</h1>
 
-        <input class="w-full border border-black rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" id="searchInput" placeholder="Search">        
-    
+        <form id="filterForm" method="GET" class="relative mt-6 max-w-2xl py-8 text-gray-900 mx-auto flex flex-col gap-3	">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
 
-    <div class="select">
-        <select name="priorite" id="priorite">
-        <option selected disabled>Priorité</option>
-            <?php include_once '../../controller/Ticket/add_ticket.php';?>
-            <option value="normal" <?php echo ($priorite == 'normal') ? 'selected' : ''; ?>>Normal</option>
-            <option value="urgent" <?php echo ($priorite == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
-        </select>
-    </div>
-
-    <div class="select">
-        <select name="statut" id="statut">
-        <option selected disabled>Statut</option>
-            <?php include_once '../../controller/Ticket/read_ticket.php';?>
-            <option value="normal" <?php echo ($statut == 'To Do') ? 'selected' : ''; ?>>To Do</option>
-            <option value="urgent" <?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Doing</option>
-            <option value="normal" <?php echo ($statut == 'Done') ? 'selected' : ''; ?>>Done</option>
-        </select>
-    </div>
-</div>
-    <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
-        <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
-            <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
-            <div class="mb-12 space-y-4">
-    <?php
-    include_once '../../controller/Ticket/read_ticket.php';
-    if (!empty($tickets)) {
-        foreach ($tickets as $ticket) {?>
-                        <h3 class="text-2xl font-semibold text-purple-900">UX <?php echo $ticket['titre']; ?></h3>
-                        <p class="mb-6"><?php echo $ticket['description']; ?></p>
-                        <a href="#" class="block font-medium text-purple-600">Know more</a>
-                <?php
-                    }
-                } else {
-                    echo "Aucun ticket disponible.";
-                }
-                ?>
-                </div>
-                <img src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg" class="w-2/3 ml-auto " alt="illustration" loading="lazy" width="900" height="600">
+            <input class="w-full border border-black rounded-md pl-10 pr-4 py-2 focus:border-blue-500 focus:outline-none focus:shadow-outline" type="text" id="searchInput" placeholder="Search">
+            <div class="flex gap-3">
+                <div class="select">
+                <select name="priorite" id="priorite">
+                    <option value="all" selected>Priorite</option>
+                    <?php include_once '../../controller/Ticket/add_ticket.php';?>
+                    <option value="normal" <?php echo ($priorite == 'normal') ? 'selected' : ''; ?>>Normal</option>
+                    <option value="urgent" <?php echo ($priorite == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
+                </select>
             </div>
+
+            <div class="select">
+                <select name="statut" id="statut">
+                    <option value="all" selected>Statut</option>
+                    
+                    <option value="To Do" <?php echo ($statut == 'To Do') ? 'selected' : ''; ?>>To Do</option>
+                    <option value="Doing" <?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Doing</option>
+                    <option value="Done" <?php echo ($statut == 'Done') ? 'selected' : ''; ?>>Done</option>
+                </select>
+            </div>
+            </div>
+        </form>
+
+        <div id="ticketContainer">
         </div>
+
     </div>
-
- </div>
-<!-- </div> -->
 </body>
-
-
 
 </html>
