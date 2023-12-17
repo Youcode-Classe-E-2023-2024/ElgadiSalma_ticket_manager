@@ -41,6 +41,7 @@ class TicketModel
         return true;
     }
 
+    
     public function getAllTickets() {
         $this->db->query("SELECT * FROM ticket");
     
@@ -53,6 +54,39 @@ class TicketModel
     }
 
 
+    public function filterPriorite($priorite){
+        $this->db->query("SELECT * FROM ticket WHERE priorite='$priorite'");
+        if($this->db->execute()){
+            $ticketP = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketP;
+    }
+
+    public function filterStatut($statut){
+        $this->db->query("SELECT * FROM ticket WHERE etat='$statut'");
+        if($this->db->execute()){
+            $ticketS = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketS;
+    }
+
+    public function filterPrioriteStatut($priorite , $statut){
+        $this->db->query("SELECT * FROM ticket WHERE priorite='$priorite' AND etat='$statut'");
+        if($this->db->execute()){
+            $ticketPS = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketPS;
+    }
+    
 }
 
 
