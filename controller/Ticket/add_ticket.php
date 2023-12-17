@@ -24,5 +24,5 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST') {
 
 $users = $userModel->getAllUsers();
 
-include_once "../../view/Ticket/add.php";
+// include_once "../../view/Ticket/add.php";
 ?>
