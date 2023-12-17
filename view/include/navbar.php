@@ -1,4 +1,4 @@
-<nav class="bg-white border-b border-gray-300">
+<div class="bg-white border-b border-gray-300">
         <div class="flex justify-between items-center px-9">
             <!-- Ícono de Menú -->
             <button id="menu-button" class="lg:hidden">
@@ -21,7 +21,7 @@
                 </button>
             </div>
         </div>
-    </nav>
+    </div>
 
     <!-- Barra lateral -->
     <div id="sidebar" class="lg:block hidden bg-white w-64 h-screen fixed rounded-none border-none">
@@ -34,7 +34,7 @@
             </a>
             
             </a>
-            <a href="../../controller/Ticket/add_ticket.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="../Ticket/add.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-store"></i>
                 <span>Ajouter ticket</span>
             </a>
@@ -47,7 +47,7 @@
                 <i class="fas fa-exchange-alt"></i>
                 <span>Transacciones</span>
             </a> -->
-            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="../User/compte.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
                 <i class="fas fa-user"></i>
                 <span>Mon compte</span>
             </a>
