@@ -25,6 +25,7 @@
             <div class="">
                 <select name="priorite" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500 my-8" required>
                     <option selected disabled>Priorité</option>
+                    <?php include_once '../../controller/Ticket/add_ticket.php';?>
                     <option value="normal" <?php echo ($priorite == 'normal') ? 'selected' : ''; ?>>Normal</option>
                     <option value="urgent" <?php echo ($priorite == 'urgent') ? 'selected' : ''; ?>>Urgent</option>
                 </select>
