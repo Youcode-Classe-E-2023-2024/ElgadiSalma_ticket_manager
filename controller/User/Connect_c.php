@@ -2,17 +2,23 @@
 
 require_once "../model/User.php";
 
-$userModel = new  UserModel();
+$userModel = new UserModel();
 
 $email = $_POST['email'];
-$password=$_POST['password'];
+$password = $_POST['password'];
 
-if($_SERVER["REQUEST_METHOD"] === 'POST'){
-    if($userModel->login($email ,$password)){
+session_start();
 
-echo"weeeeeeeeeeeee";
+if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+    $idUser = $userModel->login($email, $password);
 
-      }else{
-        include_once"../view/connect.php?STATUS=probleme de connexion ";      
+    if ($userID) {
+        $_SESSION['id_user'] = $idUser;
+        header("Location: ../../view/Ticket/home.php?STATUS=coonexion reussite");
+        exit();
+    } else {
+        header("Location: ../../view/User/connect.php?STATUS=probleme_de_connexion");
+        exit();
     }
-    }
+}
+?>
