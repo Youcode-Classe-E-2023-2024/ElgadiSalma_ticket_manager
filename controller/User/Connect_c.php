@@ -10,13 +10,18 @@ $password = $_POST['password'];
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
-    $idUser = $userModel->login($email, $password);
+    $userInfo = $userModel->login($email, $password);
+    
 
-    if ($idUser) {
-        $_SESSION['id_user'] = $idUser;
-        header("Location: ../../view/Ticket/home.php?STATUS=coonexion reussite");
+    if ($userInfo) {
+        $_SESSION['id_user'] = $userInfo['id_user'];
+        $_SESSION['username'] = $userInfo['username'];
+    
+        echo "login";
+        header("Location: ../../view/Ticket/home.php?STATUS=connexion_reussie");
         exit();
     } else {
+        echo "not log";
         header("Location: ../../view/User/connect.php?STATUS=probleme_de_connexion");
         exit();
     }
