@@ -101,6 +101,14 @@
                     <option value="Done" <?php echo ($statut == 'Done') ? 'selected' : ''; ?>>Done</option>
                 </select>
             </div>
+
+            <div class="select">
+                <select name="statut" id="statut">
+                    <option selected disabled>Assigned to</option>
+                    <option value="all">All</option>
+                    <option value="Doing" <?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Me</option>
+                </select>
+            </div>
             </div>
         </form>
 
