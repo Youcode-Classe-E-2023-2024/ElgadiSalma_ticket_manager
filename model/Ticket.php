@@ -10,14 +10,15 @@ class TicketModel
         $this->db = new Database();
     }
 
-    public function addTicketAndAssign($titre, $description, $priorite, $selectedUsers)
+    public function addTicketAndAssign($titre, $description, $priorite,$created_by, $selectedUsers, $selectedTags)
     {
         $this->db->beginTransaction();
 
-        $this->db->query("INSERT INTO ticket (titre, description, priorite) VALUES (:titre, :description, :priorite)");
+        $this->db->query("INSERT INTO ticket (titre, description, priorite, created_by) VALUES (:titre, :description, :priorite, :created_by)");
         $this->db->bind(':titre', $titre);
         $this->db->bind(':description', $description);
         $this->db->bind(':priorite', $priorite);
+        $this->db->bind(':created_by', $created_by);
 
         if (!$this->db->execute()) {
             $this->db->cancelTransaction();
@@ -36,12 +37,22 @@ class TicketModel
                 return false;
             }
         }
+        foreach ($selectedTags as $tagId) {
+            $this->db->query("INSERT INTO tag (id_ti, id_ta) VALUES (:id_ticket, :id_tag)");
+            $this->db->bind(':id_ticket', $ticketId);
+            $this->db->bind(':id_tag', $tagId);
+
+            if (!$this->db->execute()) {
+                $this->db->cancelTransaction();
+                return false;
+            }
+        }
 
         $this->db->endTransaction();
         return true;
     }
 
-    
+    // filter
     public function getAllTickets() {
         $this->db->query("SELECT * FROM ticket");
     
@@ -76,7 +87,7 @@ class TicketModel
         return $ticketS;
     }
 
-    public function filterPrioriteStatut($priorite , $statut){
+    public function filterPrioriteStatut($priorite, $statut){
         $this->db->query("SELECT * FROM ticket WHERE priorite='$priorite' AND etat='$statut'");
         if($this->db->execute()){
             $ticketPS = $this->db->resultSet();
@@ -86,6 +97,59 @@ class TicketModel
         }
         return $ticketPS;
     }
+
+    public function filterPrioriteUser($priorite,$idUser){
+        $this->db->query("SELECT * FROM ticket WHERE priorite= :priorite AND id_ticket IN (SELECT id_t FROM assigne WHERE id_u = :user_id)");
+        $this->db->bind(':priorite', $priorite);
+        $this->db->bind(':user_id', $idUser);
+        if($this->db->execute()){
+            $ticketPA = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketPA;
+    }
+
+    public function filterStatutUser($statut,$idUser){
+        $this->db->query("SELECT * FROM ticket WHERE statut= :statut AND id_ticket IN (SELECT id_t FROM assigne WHERE id_u = :user_id)");
+        $this->db->bind(':statut', $statut);
+        $this->db->bind(':user_id', $idUser);
+        if($this->db->execute()){
+            $ticketSA = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketSA;
+    }
+    public function filterAssignedTo( $idUser){
+        $this->db->query("SELECT * FROM ticket WHERE id_ticket IN (SELECT id_t FROM assigne WHERE id_u = :user_id)");
+        $this->db->bind(':user_id', $idUser);
+        if($this->db->execute()){
+            $ticketA = $this->db->resultSet();
+        }
+        else{
+            die("error");
+        }
+        return $ticketA;
+    }
+    public function filterPrioriteStatutUser($priorite, $statut, $idUser){
+    $this->db->query("SELECT * FROM ticket WHERE 
+                    priorite = :priorite AND 
+                    etat = :statut AND 
+                    id_ticket IN (SELECT id_t FROM assigne WHERE id_u = :user_id)");
+
+    $this->db->bind(':priorite', $priorite);
+    $this->db->bind(':statut', $statut);
+    $this->db->bind(':user_id', $idUser);
+
+    if($this->db->execute()){
+        return $this->db->resultSet();
+    } else {
+        die("error");
+    }
+}
     
 }
 
