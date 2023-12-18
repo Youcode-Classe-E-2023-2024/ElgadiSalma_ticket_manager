@@ -1,6 +1,5 @@
 <div class="bg-white border-b border-gray-300">
         <div class="flex justify-between items-center px-9">
-            <!-- Ícono de Menú -->
             <button id="menu-button" class="lg:hidden">
                 <i class="fas fa-bars text-cyan-500 text-lg"></i>
             </button>
@@ -51,7 +50,7 @@
                 <i class="fas fa-user"></i>
                 <span>Mon compte</span>
             </a>
-            <a href="#" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
+            <a href="../../controller/User/log_out_c.php" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group">
             <i class="fas fa-sign-out-alt"></i>
             <span>Log out</span>
         </a>
