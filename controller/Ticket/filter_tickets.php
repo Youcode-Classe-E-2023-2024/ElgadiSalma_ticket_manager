@@ -50,10 +50,9 @@ switch (true) {
 
 }   
 
-    header('Content-Type: application/json');
 echo json_encode($filteredTickets);
-} else {
-    // Utilisateur non connecté
-    echo json_encode(['error' => 'User not logged in']);
+}else{
+    echo'ee';
 }
+
 ?>
