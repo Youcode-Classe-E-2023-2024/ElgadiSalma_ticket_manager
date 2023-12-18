@@ -30,22 +30,21 @@ Class UserModel{
     }
 
 
-    public function login($email, $password){
-        $this->db->query("SELECT * FROM user WHERE email = :email");
+    public function login($email, $password) {
+        $this->db->query("SELECT id_user, password FROM user WHERE email = :email");
         $this->db->bind(':email', $email);
-    
+
         $row = $this->db->single();
-        
-        if($row) {
+
+        if ($row) {
             $hashedPasswordFromDatabase = $row->password;
             if (password_verify($password, $hashedPasswordFromDatabase)) {
-                return true;
+                return $row->id_user;
             } else {
                 return false;
-             
             }
         } else {
-            return false;
+           return false;
         }
     }
     
