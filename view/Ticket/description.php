@@ -17,10 +17,14 @@ if(!isset($_SESSION['id_user'])){
 <body>
 <?php require_once "../../view/include/navbar.php"; ?>
 <div class="flex flex-col justify-center h-screen bg-indigo-200 ">
+    
 	<div
 		class="relative flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-xs md:max-w-2xl mx-auto border border-white bg-white text-center">
-		
+		<div class="w-full md:w-1/3 bg-white grid place-items-center">
+        <img src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg" class="w-2/3 ml-auto" alt="illustration" loading="lazy" width="900" height="600">
+    </div>
 			<div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
+                
 				<div class="flex gap-5 item-center">
 					<p class="text-gray-500 font-medium hidden md:block">Vacations</p>
                     <p class="text-gray-500 font-medium hidden md:block">Vacations</p>
