@@ -104,8 +104,13 @@
             </div>
         </form>
 
+        <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
+        <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
         <div id="ticketContainer">
+        </div>     
+       </div>
         </div>
+
 
     </div>
 </body>
