@@ -102,24 +102,25 @@ if(!isset($_SESSION['id_user'])){
             <div class="select">
                 <select name="statut" id="statut">
                     <option value="all" selected>Statut</option>
-                    
                     <option value="To Do" <?php echo ($statut == 'To Do') ? 'selected' : ''; ?>>To Do</option>
                     <option value="Doing" <?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Doing</option>
                     <option value="Done" <?php echo ($statut == 'Done') ? 'selected' : ''; ?>>Done</option>
                 </select>
             </div>
+            
 
             <div class="select">
-                <select name="statut" id="statut">
-                    <option selected disabled>Assigned to</option>
-                    <option value="all">All</option>
-                    <option value="Doing" <?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Me</option>
-                </select>
+            <select name="assignedTo" id="assignedTo">
+            <?php include_once '../../controller/Ticket/filter_tickets.php';?>
+                <option value="all" <?php echo ($assignedTo == 'all') ? 'selected' : ''; ?>>All</option>
+                <option value="me" <?php echo ($assignedTo == 'me') ? 'selected' : ''; ?>>Me</option>
+</select>
             </div>
             </div>
         </form>
 
-        <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
+        <a href="./description.php">
+            <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
         <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
         <div id="ticketContainer">
         </div>     
@@ -127,6 +128,7 @@ if(!isset($_SESSION['id_user'])){
         </div>
 
 
+        </a>
     </div>
 </body>
 
