@@ -31,22 +31,25 @@ Class UserModel{
 
 
     public function login($email, $password) {
-        $this->db->query("SELECT id_user, password FROM user WHERE email = :email");
-        $this->db->bind(':email', $email);
+    $this->db->query("SELECT id_user, username, password FROM user WHERE email = :email");
+    $this->db->bind(':email', $email);
 
-        $row = $this->db->single();
+    $row = $this->db->single();
 
-        if ($row) {
-            $hashedPasswordFromDatabase = $row->password;
-            if (password_verify($password, $hashedPasswordFromDatabase)) {
-                return $row->id_user;
-            } else {
-                return false;
-            }
+    if ($row) {
+        $hashedPasswordFromDatabase = $row->password;
+        if (password_verify($password, $hashedPasswordFromDatabase)) {
+            // Retourne un tableau associatif avec l'ID de l'utilisateur et le nom d'utilisateur
+            return ['id_user' => $row->id_user, 'username' => $row->username];
         } else {
-           return false;
+            return false;
         }
+    } else {
+       return false;
     }
+}
+
+    
     
 
 
@@ -58,6 +61,17 @@ Class UserModel{
             return $users;
         } else {
             die("Error in get users");
+        }
+    }
+
+    public function getAllTags() {
+        $this->db->query("SELECT * FROM tags");
+    
+        if ($this->db->execute()) {
+            $tags = $this->db->resultassoc();
+            return $tags;
+        } else {
+            die("Error in get tags");
         }
     }
     // public function updataUser($data){
