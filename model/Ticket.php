@@ -150,7 +150,18 @@ class TicketModel
         die("error");
     }
 }
-    
+
+public function getMyTickets($username) {
+    $this->db->query("SELECT * FROM ticket WHERE created_by = :username");
+    $this->db->bind(':username', $username);
+
+    if ($this->db->execute()) {
+        $tickets = $this->db->resultassoc();
+        return $tickets;
+    } else {
+        die("Error");
+    }
+}
 }
 
 
