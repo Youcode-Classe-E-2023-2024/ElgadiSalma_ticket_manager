@@ -58,8 +58,28 @@ if(!isset($_SESSION['id_user'])){
                 ?>
             </div>
             </div>
-
             <button type="button" onclick="toggleDropdown()">^_^</button>
+            <div class="relative inline-block">
+            <input type="text" placeholder="Tag" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500">
+            <div class="absolute max-h-40 w-full z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto hidden"  id="dropdown">
+                <?php
+                if (!empty($tags)) {
+                    foreach ($tags as $tag) {
+                    ?>
+                        <div class="p-2">
+                            <label><input type="checkbox" name="selected_tags[]" multiple value="<?php echo $tag['id_tag']; ?>" class="mr-2"><?php echo $tag['name']; ?></label>
+                        </div>
+                    <?php
+                    }
+                } else {
+                    echo "utilisateurs indisponibles";
+                }
+                ?>
+            </div>
+            </div>
+
+
+            <button type="button" onclick="toggle()">^_^</button>
 
         <div class="flex justify-center my-6">
             <button type="submit" class="rounded-full p-3 w-full sm:w-56 bg-gradient-to-r from-sky-600 to-teal-300 text-white text-lg font-semibold">
@@ -102,6 +122,10 @@ if(!isset($_SESSION['id_user'])){
     }
     function toggleDropdown() {
         var dropdown = document.getElementById('dropdownContent');
+        dropdown.classList.toggle('hidden');
+    }
+    function toggle() {
+        var dropdown = document.getElementById('dropdown');
         dropdown.classList.toggle('hidden');
     }
 </script>
