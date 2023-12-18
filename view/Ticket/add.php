@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['id_user'])){
+    header("location:../User/connect.php");
+}
+?>
 <!doctype html>
 <html>
 <head>
