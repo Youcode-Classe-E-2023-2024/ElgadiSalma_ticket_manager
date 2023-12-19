@@ -40,7 +40,7 @@ if(!isset($_SESSION['id_user'])){
                 </select>
             </div>
 
-            <div class="relative inline-block">
+            <div class="relative my-8 inline-block">
                 <input type="text" id="searchInput" placeholder="Search" class="focus:outline-none border-b w-full pb-2 border-sky-400 placeholder-gray-500">
             <div class="absolute max-h-40 w-full z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg overflow-y-auto hidden"  id="dropdownContent">
                 <?php
