@@ -9,4 +9,6 @@ if($id_ticket = $_GET['id']) {
 
 
 $tickets = $ticketModel->getTicketsById($id_ticket);
+$commentaires = $ticketModel->getCommentairesById($id_ticket);
+
 ?>
