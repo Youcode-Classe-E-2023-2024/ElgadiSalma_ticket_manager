@@ -18,9 +18,9 @@ if(!isset($_SESSION['id_user'])){
 </head>
 
 <?php require_once "../../view/include/navbar.php"; ?>
-    <body>
+    <body >
 
-        <div class="w-full h-auto overflow-scroll block h-screen bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 p-4 flex items-center justify-center" >
+        <div class="w-full h-auto overflow-scroll block h-screen bg-indigo-200   p-4 flex items-center justify-center" >
         <div class="bg-white py-6 px-10 sm:max-w-md w-full ">
         <form action="../../controller/Ticket/add_ticket.php" method="post">
             <div>
