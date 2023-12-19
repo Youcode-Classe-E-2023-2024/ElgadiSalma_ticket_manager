@@ -72,6 +72,17 @@ class TicketModel
         }   
     }
 
+    public function updateTicket($statut , $id_ticket) {
+        $this->db->query("UPDATE ticket SET etat = '$statut' WHERE id_ticket = '$id_ticket'");
+        // var_dump($statut);
+        // var_dump($id_ticket);
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }   
+    }
+
     // filter
     public function getAllTickets() {
         $this->db->query("SELECT * FROM ticket");
@@ -182,6 +193,11 @@ public function getMyTickets($username) {
         die("Error");
     }
 }
+
+
+
+
+
 }
 
 
