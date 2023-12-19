@@ -52,6 +52,17 @@ class TicketModel
         return true;
     }
 
+    public function getTicketsById($id_ticket) {
+        $this->db->query("SELECT * FROM ticket WHERE id_ticket='$id_ticket'");
+    
+        if ($this->db->execute()) {
+            $tickets = $this->db->resultassoc();
+            return $tickets;
+        } else {
+            die("Erreur lors de la récupération des tickets.");
+        }
+    }
+
     // filter
     public function getAllTickets() {
         $this->db->query("SELECT * FROM ticket");
