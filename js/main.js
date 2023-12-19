@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const rows = tickets.map((ticket) => {
             return (
                 `
-                    <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
+                    <div class="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12">
                         <div class="mb-12 space-y-4">
                             <h3 class="text-2xl font-semibold text-purple-900"> ${ticket.titre}</h3>
                             <p class="mb-6 ">${ticket.description}</p>
