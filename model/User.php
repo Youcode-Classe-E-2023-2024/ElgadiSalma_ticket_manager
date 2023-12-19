@@ -22,11 +22,11 @@ Class UserModel{
     public function register($username, $email, $password, $photo){
         $this->db->query("INSERT INTO user (username, email , password , photo) 
         VALUES ('$username', '$email','$password','$photo')");
-        if($this->db->execute()){
-            return true;
-        } else {
-            return false;
-        }
+            if($this->db->execute()){
+                return true;
+            } else {
+                return false;
+            }
     }
 
 
