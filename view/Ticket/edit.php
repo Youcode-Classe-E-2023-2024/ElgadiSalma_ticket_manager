@@ -32,9 +32,8 @@ if (!isset($_SESSION['id_user'])) {
 <div class="flex flex-col justify-center h-screen bg-indigo-200 ">
     <div class="edit">
     
-    <form action="">
 <div class="flex w-72 flex-col gap-6">
-<form action="../../controller/Ticket/edit.php" method="post">
+
         <?php
         require_once "../../controller/Ticket/read_ticket.php";
         foreach ($tickets as $ticket):
@@ -44,20 +43,22 @@ if (!isset($_SESSION['id_user'])) {
         <p class="md:text-xl text-gray-500 text-base"><ins>Created at :</ins> <?php echo $ticket['date']; ?></p>
         <p class="md:text-xl text-gray-500 text-base"><ins>Priorite :</ins> <?php echo $ticket['priorite']; ?></p>
         <div class="select">
+        <?php endforeach; ?>
+        <form action="../../controller/Ticket/edit.php" method="post">
+        <input type="hidden" name="id" value="<?php echo $ticket['id_ticket']; ?>">
         <select name="statut" id="statut">
-        
-
             <option selected disabled>Statut</option>
-            <option value=<?php echo ($statut == 'To Do') ? 'selected' : ''; ?>>To Do</option>
-            <option value=<?php echo ($statut == 'Doing') ? 'selected' : ''; ?>>Doing</option>
-            <option value=<?php echo ($statut == 'Done') ? 'selected' : ''; ?>>Done</option>
+            <option >To Do</option>
+            <option >Doing</option>
+            <option >Done</option>
         </select>
         </div>
         
-        <?php endforeach; ?>
-        <input type="submit" placeholder="Save" class="py-2 px-4 bg-blue-700 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">
-</div>
+        
+        <button type="submit" name="submit" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Save</button>
 </form>
+    </div>
+
     
 </div>
 </div>
