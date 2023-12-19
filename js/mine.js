@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         <p class="mb-6 ">${ticket.description}</p>
                         <a href="./description.php?id=${ticket.id_ticket}" class="block font-medium text-purple-600">Know more</a>                    </div>
                     <img src="https://tailus.io/sources/blocks/end-image/preview/images/ux-design.svg" class="w-2/3 ml-auto" alt="illustration" loading="lazy" width="900" height="600">
-                    <a href="#"class="block font-medium text-green-500">edit</a>
+                    <a href="./edit.php?id=${ticket.id_ticket}"class="block font-medium text-green-500">edit</a>
                     <a href="../../controller/Ticket/delete.php?id=${ticket.id_ticket}"class="block font-medium text-red-500">delete</a>
                 </div>
                 `
