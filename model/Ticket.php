@@ -63,6 +63,26 @@ class TicketModel
         }
     }
 
+    public function addCommentaire($text ,$id_ticket) {
+        $this->db->query("INSERT INTO commentaire (text) VALUES ($text) WHERE id_ticket='$id_ticket'");
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getCommentairesById($id_ticket) {
+        $this->db->query("SELECT * FROM commentaire WHERE id_ticket='$id_ticket'");
+    
+        if ($this->db->execute()) {
+            $commentaires = $this->db->resultassoc();
+            return $commentaires;
+        } else {
+            die("Erreur lors de la récupération des commentaires.");
+        }
+    }
+
     public function deleteTicket($id_ticket) {
         $this->db->query("DELETE FROM ticket WHERE id_ticket = '$id_ticket'");
         if($this->db->execute()){
