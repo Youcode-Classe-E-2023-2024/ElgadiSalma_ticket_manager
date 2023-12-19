@@ -63,6 +63,15 @@ class TicketModel
         }
     }
 
+    public function deleteTicket($id_ticket) {
+        $this->db->query("DELETE FROM ticket WHERE id_ticket = '$id_ticket'");
+        if($this->db->execute()){
+            return true;
+        } else {
+            return false;
+        }   
+    }
+
     // filter
     public function getAllTickets() {
         $this->db->query("SELECT * FROM ticket");
