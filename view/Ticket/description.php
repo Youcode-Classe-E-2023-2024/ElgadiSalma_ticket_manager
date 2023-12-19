@@ -34,6 +34,10 @@ if (!isset($_SESSION['id_user'])) {
                 ?>
                 <h3 class="font-black text-gray-800 md:text-3xl text-xl"><?php echo $ticket['titre']; ?></h3>
                 <p class="md:text-lg text-gray-500 text-base"><?php echo $ticket['description']; ?></p>
+                <p class="md:text-lg text-gray-500 text-base">Statut : <?php echo $ticket['etat']; ?></p>
+                <p class="md:text-lg text-gray-500 text-base">Created at : <?php echo $ticket['date']; ?></p>
+                <p class="md:text-lg text-gray-500 text-base">Priorite : <?php echo $ticket['priorite']; ?></p>
+                <!-- <p class="md:text-lg text-gray-500 text-base"><?php echo $ticket['description']; ?></p> -->
                 <div class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
