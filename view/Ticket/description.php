@@ -63,13 +63,15 @@ if (!isset($_SESSION['id_user'])) {
                     <p><?php echo $commentaire['text']; ?></p>
                     <p class="md:text-sm"><?php echo $commentaire['date_com']; ?></p>
                 <?php endforeach; ?>
+                </form>
 
                 <form action="../../controller/Ticket/add_commentaire.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $ticket['id_ticket']; ?>">
+                <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                     <div class="flex gap-2">
 
                 <div class="relative h-10 w-full min-w-[200px]">
-                <input
+                <input name="text"
                 class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                 placeholder=" "
                 />
@@ -77,11 +79,12 @@ if (!isset($_SESSION['id_user'])) {
                 Ajouter Commentaire
                 </label>
                 </div>
-                <button type="submit" name="submit" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Save</button></div>
+                <button type="submit" name="submit" class="py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Save</button>
+            </div>
                 </form>
-                </div>
+                
 
-                </form>
+                
             </div>
         </div>
     </div>
