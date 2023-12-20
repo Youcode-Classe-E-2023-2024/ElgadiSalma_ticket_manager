@@ -74,15 +74,16 @@ Class UserModel{
             die("Error in get tags");
         }
     }
-    // public function updataUser($data){
-    //     $id = $data['id'];
-    //     $fullName = $data['fullName'];
-    //     $email = $data['email'];
-    //     $this->db->query("UPDATE user SET fullName = '$fullName' , email = '$email' WHERE id = '$id'  ");
-    //     return $this->db->execute();
-    // }
-
-
     
+    public function get_User_by_id($id_user) {
+        $this->db->query("SELECT * FROM user WHERE id_user='$id_user'");
+    
+        if ($this->db->execute()) {
+            $info_users = $this->db->resultassoc();
+            return $info_users;
+        } else {
+            die("Error in get infos");
+        }
+    }
     
 }
