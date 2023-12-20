@@ -63,8 +63,8 @@ class TicketModel
         }
     }
 
-    public function addCommentaire($text ,$id_ticket) {
-        $this->db->query("INSERT INTO commentaire (text) VALUES ($text) WHERE id_ticket='$id_ticket'");
+    public function addCommentaire($id_user, $id_ticket, $text) {
+        $this->db->query("INSERT INTO commentaire (id_user ,id_ticket,text ) VALUES ( '$id_user' , '$id_ticket', '$text')");
         if($this->db->execute()){
             return true;
         } else {
