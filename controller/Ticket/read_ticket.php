@@ -9,6 +9,9 @@ if($id_ticket = $_GET['id']) {
 
 
 $tickets = $ticketModel->getTicketsById($id_ticket);
+$assigned_to = $ticketModel->assignedTo($id_ticket);
+$tags = $ticketModel->tags($id_ticket);
+
 $commentaires = $ticketModel->getCommentairesById($id_ticket);
 
 ?>
