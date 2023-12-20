@@ -45,6 +45,7 @@ if(!isset($_SESSION['id_user'])){
             height: 3em;
             line-height: 3;
             background: #5c6664;
+            /* padding: 1px; */
             overflow: hidden;
             border-radius: .35em;
             border: 1px solid black;
@@ -120,7 +121,7 @@ if(!isset($_SESSION['id_user'])){
         </form>
 
             <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
-        <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
+        <div class="mx-auto grid gap-6 md:w-1/4 lg:w-full lg:grid-cols-3">
         <div id="ticketContainer">
         </div>     
        </div>
