@@ -9,7 +9,7 @@ $ticketModel = new TicketModel();
 
 $priorite = "";
 $statut = "";
-
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === 'POST') {
     $titre = $_POST['titre'];
