@@ -15,6 +15,22 @@ if(!isset($_SESSION['id_user'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <script src="../../js/mine.js"></script>
 </head>
+<style>
+    .container{
+            display:flex;
+            flex-wrap:wrap;
+            flex-direction:row;
+            justify-content:space-between;
+            width:100%;
+            margin: 0 auto;
+            gap: 25px;
+        }
+        .container p{
+            font-size: 11px;
+            padding: 10px 15px;
+            /* white-space: ; */
+        }
+</style>
 <body class="bg-indigo-200 lg:flex">
 
     <?php require_once "../../view/include/navbar.php"; ?>
@@ -26,13 +42,8 @@ if(!isset($_SESSION['id_user'])){
         <?require_once "../../controller/Ticket/mes_tickets.php";?>
         
 
-        <div class="container m-auto px-6 text-gray-500 md:px-12 flex flex-wrap	 xl:px-0">
-        <div class="mx-auto grid gap-6 md:w-3/4 lg:w-full lg:grid-cols-3">
-        <div id="ticketContainer">
-        </div>     
+        <div id="ticketContainer" class="container">
        </div>
-        </div>
-
 
     </div>
 </body>
