@@ -7,39 +7,44 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .edit{
+            background-color: beige;
+            display: flex;
+            flex-direction: column;
+            width: 25rem;
+            height: 30rem;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            align-self: center;
+            }
+    </style>
 </head>
-<body>
+<body class="bg-indigo-200">
 <?php require_once "../../view/include/navbar.php"; ?>
-<div class="bg-indigo-200 h-screen	">
 
+<div class="flex flex-col justify-center h-screen ">
+    
+        <div class="edit ">
+          <div class="w-full md:w-1/2 grid place-items-center">
+            <img src="../../image/utilisateur-anonyme.png" alt="">
+          </div>
+            
+                
+            <div class="w-full md:w-2/3 flex flex-col space-y-2 p-3">
+              <?php
+              require_once "../../controller/User/profil_c.php";
+              foreach ($info_users as $user):
+              ?>
 
-  <div class="px-9 mx-9 flex justify-center">
-    <div class="max-w-xs cursor-pointer rounded-lg bg-white p-2 shadow duration-150 hover:scale-105 hover:shadow-md">
-      <img class="w-full rounded-lg object-cover object-center" src="https://images.unsplash.com/photo-1580477371194-4593e3c7c6cf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="product" />
-      <div>
-        <div class="my-6 flex items-center justify-between px-4">
-          <p class="font-bold text-gray-500">Product Name</p>
-          <p class="rounded-full bg-blue-500 px-2 py-0.5 text-xs font-semibold text-white">$120</p>
+                <h3 class=" text-gray-800 md:text-3xl text-xl">Mes informations</h3>
+                <p class="md:text-xl text-gray-500 text-base"><ins>User Name </ins>: <?php echo $user['username']; ?></p>
+                <p class="md:text-xl text-gray-500 text-base"><ins>Email </ins>: <?php echo $user['email']; ?></p>
+
+                <?php endforeach; ?>
+            </div>
         </div>
-        <div class="my-4 flex items-center justify-between px-4">
-          <p class="text-sm font-semibold text-gray-500">First option</p>
-          <p class="rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-600">23</p>
-        </div>
-        <div class="my-4 flex items-center justify-between px-4">
-          <p class="text-sm font-semibold text-gray-500">Second option</p>
-          <p class="rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-600">7</p>
-        </div>
-        <div class="my-4 flex items-center justify-between px-4">
-          <p class="text-sm font-semibold text-gray-500">Third option</p>
-          <p class="rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-600">1</p>
-        </div>
-        <div class="my-4 flex items-center justify-between px-4">
-          <p class="text-sm font-semibold text-gray-500">Fourth option</p>
-          <p class="rounded-full bg-gray-200 px-2 py-0.5 text-xs font-semibold text-gray-600">23</p>
-        </div>
-    </div>
-  </div>
-</div>
 </div>
 
 </body>
