@@ -214,7 +214,25 @@ public function getMyTickets($username) {
     }
 }
 
+public function assignedTo($id_ticket){
+    $this->db->query("SELECT * FROM user WHERE id_user IN (SELECT id_u FROM assigne WHERE id_t = $id_ticket)");
+    if ($this->db->execute()) {
+        $assigned_to = $this->db->resultassoc();
+        return $assigned_to;
+    } else {
+        die("Error");
+    }
+}
 
+public function tags($id_ticket){
+    $this->db->query("SELECT * FROM tags WHERE id_tag IN (SELECT id_ta FROM tag WHERE id_ti = $id_ticket)");
+    if ($this->db->execute()) {
+        $tags = $this->db->resultassoc();
+        return $tags;
+    } else {
+        die("Error");
+    }
+}
 
 
 
