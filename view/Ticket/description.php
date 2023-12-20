@@ -24,8 +24,12 @@ if (!isset($_SESSION['id_user'])) {
             </div>
             <div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
                 <div class="flex gap-5 item-center">
-                    <p class="text-gray-500 font-medium hidden md:block">Vacations</p>
-                    <p class="text-gray-500 font-medium hidden md:block">Vacations</p>
+                <?php
+                require_once "../../controller/Ticket/read_ticket.php";
+                foreach ($tags as $tag):
+                ?>
+                <p class="text-gray-500 font-medium hidden md:block"><?php echo $tag['name']; ?></p>
+                <?php endforeach; ?>
                 </div>
             <form action="" method="get">
                 <?php
@@ -37,20 +41,20 @@ if (!isset($_SESSION['id_user'])) {
                 <p class="md:text-xl text-gray-500 text-base"><ins>Statut :</ins> <?php echo $ticket['etat']; ?></p>
                 <p class="md:text-xl text-gray-500 text-base"><ins>Created at :</ins> <?php echo $ticket['date']; ?></p>
                 <p class="md:text-xl text-gray-500 text-base"><ins>Priorite :</ins> <?php echo $ticket['priorite']; ?></p>
-                
-                <div class="flex">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
-                    </svg>
-                </div>
+                <p class="md:text-xl text-gray-500 text-base"><ins>Created by :</ins> <?php echo $ticket['created_by']; ?></p>
+
                 <?php endforeach; ?>
 
+                <p class="md:text-xl text-gray-500 text-base"><ins>Assigned to :</ins>
+                <?php
+                require_once "../../controller/Ticket/read_ticket.php";
+                foreach ($assigned_to as $assigned):
+                ?>
+                <?php echo $assigned['username']; ?> -
+                <?php endforeach; ?> 
+                </p>
+
+                   
                 <div class="my-8 flex-col">
                     <div class="flex justify-between">
                         <h1><ins>Commentaires :</ins></h1>
